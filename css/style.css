@@ -1,10 +1,31 @@
 body {
 	background-color: darkslategray;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 }
+
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.buttons,
+.links {
+	display: flex;
+	justify-content: center;
+}
+
+.links {
+	margin-top: 30px;
+}
+
+/* ------------------------------------------------------------ *\
+	Button
+\* ------------------------------------------------------------ */
 
 .button {
 	position: relative; 
@@ -298,8 +319,104 @@ body {
 .button-5:hover .moon:after {
 	transform: scale(0);
 	background-color: #121212;
+	transform-origin: right;
 }
 
 .button-5:hover .moon {
 	background-color: orange;
+}
+
+/* ------------------------------------------------------------ *\
+	Link
+\* ------------------------------------------------------------ */
+
+.link {
+	color: #fff;
+	position: relative;
+	padding-left: 24px;
+	display: inline-block;
+	margin-left: 20px;
+}
+
+/* feature */
+
+.link:hover:after {
+	animation: 2s underline-after forwards; 
+}
+
+@keyframes underline-after {
+	0% {
+		left: 2.5%;
+	}
+
+	30% {
+		left: 100%;
+		border-top: 2px solid currentColor;
+		border-right: 2px solid currentColor;
+		transform: translateY(0) rotate(45deg);
+	}
+
+ 	50% {
+ 		transform: translateY(2px) rotate(180deg);
+ 		border-right: 2px solid transparent;
+ 		width: 8px;
+ 	}
+
+ 	55% {
+ 		transform: translateY(2px) rotate(180deg);
+ 		border-right: 2px solid transparent;
+ 		width: 8px;
+ 	}
+
+	75% {
+		transform: translateY(2px) rotate(180deg);
+		border-top: 2px solid currentColor;
+		border-right: 2px solid transparent;
+	}
+	100% {
+		border-top: 2px solid currentColor;
+		border-right: 2px solid transparent;
+		transform: translateY(2px) rotate(180deg);
+		width: 80%;
+		left: 20.5%;
+	}
+}
+
+@keyframes pop-out {
+	from {
+		opacity: 0;
+		left: -10%;
+	}
+
+	to {
+		opacity: 1;
+		left: 2.5%;
+	}
+}
+
+/* feature */
+
+.link:before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background-color: currentColor;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.link:after {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	position: absolute;
+	left: 2.5%;
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+	animation: 500ms pop-out forwards;
 }
